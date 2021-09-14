@@ -1,9 +1,7 @@
 
-#node_modules
-*/**/node_modules
-
+# node_modules
+node_modules/*
 
 #frontend
-frontend/src/node_modules/@sapper/
-!frontend/src/node_modules/images/
+!frontend/src/node_modules/images/*
 frontend/__sapper__/

@@ -1,2 +1,2 @@
 #!/bin/bash
-ipfs daemon
+docker-compose up -d

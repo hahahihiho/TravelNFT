@@ -11,3 +11,11 @@ back/*
 frontend/src/node_modules/@sapper
 !frontend/src/node_modules/images/*
 frontend/__sapper__/
+
+# .secret
+.secret/*
+!.secret/.test_priv_keys
+
+# hardhat
+!hardhat/hardhat.config.js
+hardhat/*

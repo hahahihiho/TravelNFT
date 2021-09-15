@@ -17,7 +17,5 @@ frontend/__sapper__/
 !.secret/.test_priv_keys
 
 # hardhat
-hardhat/*
-!hardhat/hardhat.config.js
-!hardhat/scripts
-!hardhat/contracts
+hardhat/cache
+hardhat/artifacts

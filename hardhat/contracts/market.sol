@@ -19,6 +19,7 @@ contract NFTMarket is ReentrancyGuard {
   }
 
   struct MarketItem {
+    uint256 itemId;
     address nftContract;
     uint256 tokenId;
     address payable seller;
@@ -48,7 +49,7 @@ contract NFTMarket is ReentrancyGuard {
     address nftContract,
     uint256 tokenId,
     uint256 price,
-    string countryStrNum
+    string memory countryStrNum
   ) public payable nonReentrant {
     require(price > 0, "Price must be at least 1 wei");
     require(msg.value == listingPrice, "Price must be equal to listing price");

@@ -19,3 +19,5 @@ frontend/__sapper__/
 # hardhat
 hardhat/*
 !hardhat/hardhat.config.js
+!hardhat/scripts
+!hardhat/contracts

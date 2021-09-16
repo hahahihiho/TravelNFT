@@ -8,3 +8,4 @@ source ~/.nvm/nvm.sh
 
 nvm install node
 nvm install --lts
+source ~/.profile

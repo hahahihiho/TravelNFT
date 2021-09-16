@@ -9,4 +9,12 @@ function isMetamask(){
     }
 }
 
-export default {isMetamask}
+function isConnected() {
+    if(isMetamask()){
+        return ethereum.isConnected()
+    }else {
+        return false;
+    }
+}
+
+export default {isMetamask, isConnected}

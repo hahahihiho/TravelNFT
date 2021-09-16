@@ -1,5 +1,5 @@
-import ABI from '../../../hardhat/config'
-import CA from '../../../hardhat/CA'
+import ABI from '../../../hardhat/config.js'
+import CA from '../../../hardhat/CA.js'
 
 const marketAbi = ABI.marketAbi
 const nftAbi = ABI.nftAbi

@@ -9,6 +9,10 @@ function isMetamask(){
     }
 }
 
+function connect(){
+    return ethereum.request({ method: 'eth_requestAccounts' });
+}
+
 function isConnected() {
     if(isMetamask()){
         return ethereum.isConnected()
@@ -17,4 +21,4 @@ function isConnected() {
     }
 }
 
-export default {isMetamask, isConnected}
+export default {isMetamask, connect, isConnected}

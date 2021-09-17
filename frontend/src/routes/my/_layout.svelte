@@ -4,7 +4,7 @@
 </script>
 
 <style>
-	main {
+	main{
 		position: relative;
 		max-width: 56em;
 		background-color: white;

@@ -11,6 +11,7 @@
 		padding-left: 1rem;
 		margin: 0 auto;
 		box-sizing: border-box;
+		text-align: center;
 	}
 </style>
 

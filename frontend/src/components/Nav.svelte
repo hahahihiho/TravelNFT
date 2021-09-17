@@ -15,15 +15,22 @@
 	}
 
 	.title{
-		flex-shrink: 0;
-		width: 30%;
+		font-size: 2rem;
 	}
 	.search{
-		width: 50%;
-		flex-shrink: 1
+		font-size:1rem;
+		width: 30%;
+		border-radius: 50px;
+		height: 50px;
+		margin-top: 30px;
+		padding-left: 30px;
+	}
+	.search:focus{
+		outline: none;
 	}
 	.nav{
-		width:30%;
+		align-self: center;
+		margin-left: auto;
 	}
 
 	ul {
@@ -39,6 +46,8 @@
 	}
 
 	li {
+		font-weight: bolder;
+		font-size: 1.3rem;
 		display: block;
 		float: left;
 	}
@@ -68,9 +77,7 @@
 <nav>
 	<div>
 		<h1 class="title"><a aria-current="{segment === undefined ? 'page' : undefined}" href=".">Kang d'Arc</a></h1>
-		<div class="search">
-			search
-		</div>
+		<input class="search" placeholder="🔍  search">
 		<ul class="nav">
 			<li><a aria-current="{segment === 'market' ? 'page' : undefined}" href="market">market</a></li>
 			<li><a aria-current="{segment === 'community' ? 'page' : undefined}" href="community">community</a></li>

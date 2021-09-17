@@ -1,0 +1,1 @@
+<p>registerAsset</p>

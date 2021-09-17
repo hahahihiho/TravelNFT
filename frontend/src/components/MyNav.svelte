@@ -26,32 +26,24 @@
 		float: left;
 	}
 
-	[aria-current] {
-		position: relative;
-		display: inline-block;
-	}
-
-	[aria-current]::after {
-		position: absolute;
-		content: '';
-		width: calc(100% - 1em);
-		height: 2px;
-		background-color: rgb(255,62,0);
-		display: block;
-		bottom: -1px;
-	}
-
 	a {
 		text-decoration: none;
 		padding: 1em 0.5em;
 		display: block;
 	}
+	a.current{
+		width: calc(100% - 1em);
+		height: 2px;
+		border-top:2px rgb(255,62,0) solid; ;
+		display: block;
+		bottom: -1px;
+	}
 </style>
 
 <nav>
     <ul>
-        <li><a href="/my/collections">collections</a></li>
-        <li><a href="/my/registerUser">registerUser</a></li>
-        <li><a href="/my/registerAsset">registerAsset</a></li>
+        <li><a class:current={segment===undefined} href="/my">collections</a></li>
+        <li><a class:current={segment==="registerUser"} href="/my/registerUser">registerUser</a></li>
+        <li><a class:current={segment==="registerAsset"} href="/my/registerAsset">registerAsset</a></li>
     </ul>
 </nav>

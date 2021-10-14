@@ -1,6 +1,8 @@
 const hre = require("hardhat");
 const fs = require('fs');
 
+const CA_PATH = 'CA_local.js'
+
 async function main() {
   const NFTMarket = await hre.ethers.getContractFactory("NFTMarket");
   const nftMarket = await NFTMarket.deploy();
@@ -19,7 +21,7 @@ async function main() {
   `
 
   let data = JSON.stringify(config)
-  fs.writeFileSync('CA.js', JSON.parse(data))
+  fs.writeFileSync(CA_PATH, JSON.parse(data))
 
 }
 

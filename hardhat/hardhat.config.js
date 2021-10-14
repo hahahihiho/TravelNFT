@@ -8,12 +8,18 @@ module.exports = {
   defaultNetwork: "hardhat",
   networks: {
     hardhat: {
+      live: true,
       chainId: 1337,
       accounts : accounts
     },
     localhost: {
-      url: "http://127.0.0.1:8545",
+      live: true,
+      url: "http://127.0.0.1:8545"
     },
+    metadium_test:{
+      url: "https://api.metadium.com/dev",
+      accounts : [...privateKeys]
+    }
   },
   solidity: {
     version: "0.8.4",

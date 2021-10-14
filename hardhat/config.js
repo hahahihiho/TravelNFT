@@ -1,10 +1,10 @@
 const Market = require("./artifacts/contracts/Market.sol/NFTMarket.json")
 const NFT = require('./artifacts/contracts/NFT.sol/NFT.json')
-const ContractAddress = require("./CA.js");
+const ContractAddress = require("./CA_metadium.js");
 
 const marketAbi = Market.abi
 const nftAbi = NFT.abi
-const ABI = {marketAbi,nftAbi}
+const ABI = {marketAbi,nftAbi};
 
 const marketCA = ContractAddress.nftmarketaddress
 const nftCA = ContractAddress.nftaddress

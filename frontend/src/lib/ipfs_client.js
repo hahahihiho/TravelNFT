@@ -1,5 +1,4 @@
 import { create as ipfsHttpClient } from 'ipfs-http-client'
-import fs from 'fs';
 
 const IPFS_API = "https://ipfs.infura.io:5001/api/v0"
 const IPFS_BASE_URL = "https://ipfs.io/ipfs/"
@@ -26,9 +25,11 @@ function makeData(address, name, description, image, region, special) {
 }
 
 async function uploadContent(address,name,description,image,region,special){
-    const content = makeData(address,name,description,image,region,special)
+    const image_hash = await uploadData(image);
+    const image_url = IPFS_BASE_URL + image_hash;
+    const content = makeData(address,name,description,image_url,region,special)
     let tx_hash = await uploadData(JSON.stringify(content))
-    const content_url = IPFS_BASE_URL+tx_hash
+    const content_url = IPFS_BASE_URL+tx_hash;
     if(tx_hash !== undefined){
         console.log(content_url)
     } else {
@@ -37,15 +38,29 @@ async function uploadContent(address,name,description,image,region,special){
     return content_url
 }
 
-
-async function test(){
-    const file = fs.readFileSync("./test.txt")
-    let tx_hash = await uploadData("1234")
-    const image_uri = IPFS_BASE_URL+tx_hash
-
-    const content = makeData("owner","name","description",image_uri,'0010001',true)
-    console.log(content)
-    tx_hash = await uploadData(JSON.stringify(content))
-    console.log(IPFS_BASE_URL+tx_hash)
+async function uploadArtist(address,image,name,description,url){
+    const image_hash = await uploadData(image);
+    const image_url = IPFS_BASE_URL + image_hash;
+    const content = {address,image:image_url,name,description,url};
+    let tx_hash = await uploadData(JSON.stringify(content))
+    const content_url = IPFS_BASE_URL+tx_hash;
+    if(tx_hash !== undefined){
+        console.log(content_url)
+    } else {
+        console.log("Issue on uploading file")
+    }
+    return content_url
 }
-test()
+
+// async function test(){
+//     const file = fs.readFileSync("./test.txt")
+//     let tx_hash = await uploadData("1234")
+//     const image_uri = IPFS_BASE_URL+tx_hash
+
+//     const content = makeData("owner","name","description",image_uri,'0010001',true)
+//     console.log(content)
+//     tx_hash = await uploadData(JSON.stringify(content))
+//     console.log(IPFS_BASE_URL+tx_hash)
+// }
+
+export default {uploadContent,uploadArtist}

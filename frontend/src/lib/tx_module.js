@@ -19,6 +19,13 @@ async function createSale(url) {
     await transaction.wait()
 }
 
+async function getTokenById(id){
+    const signer = await getSigner();
+    const tokenContract = new ethers.Contract(Contract.nftCA, Contract.nftAbi, signer)
+    const data = await tokenContract.getAll(id);
+    return data;
+}
+
 async function getTokenOwners(){
     const signer = await getSigner();
     const tokenContract = new ethers.Contract(Contract.nftCA, Contract.nftAbi, signer)
@@ -52,4 +59,4 @@ async function getAllNFTs(){
     return result;
 }
 
-export default {getSigner, createSale, getAllNFTs}
+export default {getSigner, createSale, getAllNFTs,getTokenById}

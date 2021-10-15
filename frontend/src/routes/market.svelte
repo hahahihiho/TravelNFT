@@ -3,6 +3,8 @@ import Frame from '../components/Frame.svelte'
 
 import { onMount } from 'svelte';
 
+
+
 // const getData = async () => {
 //     const url = "/api/metadium.json"
 //     const res = await fetch(url,{
@@ -36,7 +38,7 @@ onMount(async () => {
     {#if items!==[]}
         {#each items as item}
             {#if item !== null}
-            <Frame src={item.image}></Frame>
+            <Frame src={item.image} item={item}></Frame>
             {/if}
         {/each}
     {:else}
@@ -44,8 +46,11 @@ onMount(async () => {
     {/if}
 </div>
 
+
 <style>
     div.wrap{
+        margin-top: 2rem;
+        height: 50rem;
         display: flex;
     }
 </style>

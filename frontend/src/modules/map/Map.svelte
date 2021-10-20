@@ -10,8 +10,8 @@
 
 	let container;
 	let map;
-	// let hover_geojson = "https://docs.mapbox.com/mapbox-gl-js/assets/us_states.geojson"
-	let hover_geojson = "https://raw.githubusercontent.com/southkorea/southkorea-maps/master/gadm/json/skorea-municipalities-geo.json"
+	let hover_geojson = "https://docs.mapbox.com/mapbox-gl-js/assets/us_states.geojson"
+	// let hover_geojson = "https://raw.githubusercontent.com/southkorea/southkorea-maps/master/gadm/json/skorea-municipalities-geo.json"
 
 	onMount(() => {
 		const link = document.createElement('link');
@@ -73,7 +73,7 @@
 								{ hover: false }
 							);
 						}
-						hoveredStateId = e.features[0].properties.ID_2;
+						hoveredStateId = e.features[0].properties.STATE_ID;
 						map.setFeatureState(
 							{ source: 'states', id: hoveredStateId },
 							{ hover: true }

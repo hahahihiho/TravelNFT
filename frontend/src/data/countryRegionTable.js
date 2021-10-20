@@ -1,4 +1,4 @@
-{
+const data = {
     "001" : {
         country : "Korea",
         region : {
@@ -28,3 +28,6 @@
         }
     }
 }
+
+export default data;
+

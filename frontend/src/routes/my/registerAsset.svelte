@@ -1,41 +1,21 @@
+<script context="module">
+    export async function preload(page,session){
+        const res = await this.fetch('/data/countryRegionTable.json');
+        const countryRegionTable = await res.json();
+        return {countryRegionTable}
+    }
+</script>
+
 <script>
-    import ipfs from '../../lib/ipfs_client';
+    import ipfs_client from '../../lib/ipfs_client';
     import tx_module from '../../lib/tx_module';
 
     import { onMount } from 'svelte';
     import { goto } from '@sapper/app';
     
     let selectedAddress;
-    const countryRegionTable = {
-        "001" : {
-            country : "Korea",
-            region : {
-                "0001":"Seoul",
-                "0002":"Busan",
-                "0003":"Daegu"
-            }
-        },
-        "002" : {
-            country : "Japan",
-            region : {
-                "0001" : "Dokyo",
-                "0002" : "Osaka"
-            }
-        },
-        "003" : {
-            country : "China",
-            region : {
-                "0001" : "Beijing"
-            }
-        },
-        "004" : {
-            country : "America",
-            region : {
-                "0001" : "New York",
-                "0002" : "Los Angeles"
-            }
-        }
-    }
+    export let countryRegionTable;
+
     const cid = Object.keys(countryRegionTable)
     const countryTable = {};
     cid.forEach(id=>{
@@ -47,7 +27,7 @@
         let temp_region_list = Object.values(countryRegionTable[id]['region'])
         regionHashList[country] = temp_region_list;
     })
-    console.log(regionHashList)
+    // console.log(regionHashList)
     
     const countryList = Object.values(countryTable);
     
@@ -98,12 +78,19 @@
         const address = selectedAddress;
         const region = getCountryRegionCode();
         const special = true;
-        let url = await ipfs.uploadContent(address,name,description,image,region,special);
-        console.log("registered url", url)
-        const result = await tx_module.createSale(url);
-        console.log(result);
-        goto("/")
+        const content = {address,name,description,image,region,special}
+        if(address && name && description && image && region && special){
+            const url = await ipfs_client.uploadContent(content)
+            console.log("registered url", url)
+            const result = await tx_module.createSale(url);
+            console.log(result);
+            goto("/")
+        }
+        else {
+            alert("Please fill the whole blank")
+        }
     }
+
 </script>
 
 <div class="container">
@@ -119,7 +106,6 @@
             <input placeholder="Asset Name" bind:value={uploadObj.name}>
             <p>3. 해당 NFT를 소개할 수 있는 URI를 입력하세요.</p>
             <textarea placeholder="Asset Description" bind:value={uploadObj.desc}></textarea>
-            <input placeholder="Asset Price" bind:value={uploadObj.price}>
             <p>발행할 NFT의 나라 및 지역을 선택해 주세요.</p>
             <select bind:value={selectedCountry} on:change={onChangeCountry}>
                 {#each countryList as country}
@@ -161,6 +147,7 @@
         border-radius: 10px;
     }
     button{
+        cursor: pointer;
         color: white;
         background-color: rgba(68, 114, 196, 1);
         text-align: center;

@@ -1,7 +1,7 @@
 
 import https from 'https';
-import config from '../../lib/config'
-import api_keys from '../../lib/api_keys';
+import config from '../../config/config'
+import api_keys from '../../config/api_keys';
 
 const CA = config.nftCA;
 // const url = `https://testnetapi.metadium.com/mrc-721/${CA}/tokens`

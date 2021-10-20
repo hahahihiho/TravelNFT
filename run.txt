@@ -57,3 +57,7 @@ wget https://upload.wikimedia.org/wikipedia/commons/6/63/Neptune_-_Voyager_2_%28
 ### hardhat (node, deploy)
 npm init --yes
 npm install --save-dev hardhat
+
+
+### handle ipfs-http-client longbit circulate import error
+frontent/node_modules/protobufjs/src/util/minimal.js -> comment out util.longbits (we don't use it)

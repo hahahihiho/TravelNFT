@@ -1,6 +1,7 @@
 import { create as ipfsHttpClient } from 'ipfs-http-client'
 
 const IPFS_API = "https://ipfs.infura.io:5001/api/v0"
+// const IPFS_API = "http://localhost:5001/api/v0"
 const IPFS_BASE_URL = "https://ipfs.io/ipfs/"
 const ipfs_http = ipfsHttpClient(IPFS_API)
 
@@ -24,11 +25,16 @@ function makeData(address, name, description, image, region, special) {
     return {address,name,description,image,region,special}
 }
 
-async function uploadContent(address,name,description,image,region,special){
+async function uploadContent(entity){
+    console.log(1)
+    const {address,name,description,image,region,special} = entity;
+    console.log(image)
     const image_hash = await uploadData(image);
+    console.log(image_hash)
     const image_url = IPFS_BASE_URL + image_hash;
     const content = makeData(address,name,description,image_url,region,special)
     let tx_hash = await uploadData(JSON.stringify(content))
+    console.log(1)
     const content_url = IPFS_BASE_URL+tx_hash;
     if(tx_hash !== undefined){
         console.log(content_url)
@@ -63,4 +69,4 @@ async function uploadArtist(address,image,name,description,url){
 //     console.log(IPFS_BASE_URL+tx_hash)
 // }
 
-export default {uploadContent,uploadArtist}
+export default {uploadContent,uploadArtist,uploadData}

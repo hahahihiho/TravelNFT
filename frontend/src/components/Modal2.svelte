@@ -247,7 +247,7 @@
   
     .window {
       position: relative;
-      width: 80rem;
+      width: 90rem;
       max-width: 100%;
       max-height: 100%;
       margin: 2rem auto;

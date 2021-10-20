@@ -1,10 +1,10 @@
 <script>
-    import ipfs from '../../lib/ipfs_client';
+    // import ipfs from '../../lib/ipfs_client';
     import tx_module from '../../lib/tx_module';
-
     import { onMount } from 'svelte';
     import { goto } from '@sapper/app';
     
+
     let selectedAddress;
     onMount(async () => {
         const wallet = await import('../../lib/wallet')
@@ -37,8 +37,8 @@
         console.log("uploading Object", uploadObj);
         const {name,desc:description,file:image,sns_url} = uploadObj;
         const address = selectedAddress;
-        let url = await ipfs.uploadArtist(address,image,name,description,sns_url);
-        console.log("registered url", url)
+        // let url = await ipfs.uploadArtist(address,image,name,description,sns_url);
+        // console.log("registered url", url)
         goto("/")
     }
 </script>

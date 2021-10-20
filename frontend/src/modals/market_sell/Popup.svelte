@@ -10,15 +10,19 @@
       goto("/")
     }
   }
-  
-  async function buy(){
-    const entity = item;
-    tx_module.buyToken(entity)
-    goto("/market")
-  }
 
   export let item={};
+  const uploadObj = item;
+
+  async function sell(){
+    const entity = uploadObj
+    await tx_module.sellToken(entity)
+    goto("/my")
+  }
+
+
 </script>
+
 <div class="wrapper">
   <span class="left">
     <img src = {item.image} alt="">
@@ -28,8 +32,12 @@
     <p class="address">owner : {item.owner}</p>
     <p>{item.name}</p>
     <p>{item.description}</p>
-    <p>{item.price} meta </p>
-    <button class="order" on:click={buy}> Buy </button>
+    <p>
+      <input placeholder="Price" bind:value={uploadObj.price}> meta
+    </p>
+    <p>
+      <button class="order" on:click={sell}> Sell </button>
+    </p>
   </span>
 </div>
 
@@ -63,5 +71,14 @@
     width:100%;
     height:3rem;
   }
+  /* p.order{
+    cursor: pointer;
+    background-color: deeppink;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    font-size : 1.7rem;
+    text-align:center;
+  } */
 </style>
 
